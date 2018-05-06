@@ -1,0 +1,31 @@
+<!Doctype html>
+<html>
+
+<head>
+  <title>组件</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <com-a :count="1"></com-a>
+  </div>
+  <script>
+    Vue.component('com-a', {
+      name: 'coma',
+      props: {
+        count: {
+          type: Number,
+          default: 1
+        }
+      },
+      template: '<div><com-a :count="count+1" v-if="count<30"></com-a>{{count}}</div>'
+    })
+    new Vue({
+      el: "#app"
+    })
+  </script>
+</body>
+
+</html>

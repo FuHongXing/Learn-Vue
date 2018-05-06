@@ -1,0 +1,55 @@
+<!Doctype html>
+<html>
+
+<head>
+  <title>组件</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{value}}
+    <my-com v-model="value"></my-com>
+    <button @click="handleMinus">-1</button>
+  </div>
+  <script>
+    Vue.component('my-com', {
+      props: {
+        value: {
+          type: Number
+        }
+      },
+      template: '<div><button @click="handleChick">+1</button>{{currentValue}}</div>',
+      data() {
+        return {
+          currentValue: this.value
+        }
+      },
+      watch: {
+        value(val) {
+          this.currentValue = val;
+        }
+      },
+      methods: {
+        handleChick() {
+          this.currentValue++;
+          this.$emit('input', this.currentValue);
+        }
+      }
+    })
+    new Vue({
+      el: "#app",
+      data: {
+        value: 1
+      },
+      methods: {
+        handleMinus() {
+          this.value--;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!Doctype html>
+<html>
+
+<head>
+  <title>动态添加组件</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    Hello Vue
+  </div>
+  <script>
+    const myComponent = Vue.extend({
+      template: '<div>form extend</div>'
+    });
+    new myComponent().$mount('#app')
+  </script>
+</body>
+
+</html>

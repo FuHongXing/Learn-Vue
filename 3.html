@@ -1,0 +1,44 @@
+<!Doctype html>
+<html>
+
+<head>
+  <title>组件</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <my-com @increase="handleAdd"></my-com>
+  </div>
+  <script>
+    Vue.component('my-com', {
+      template: '\
+      <div>\
+      <button @click="handleAdd">+1</button>\
+      </div>\
+        ',
+      data() {
+        return {
+          counter: 0
+        }
+      },
+      methods: {
+        handleAdd() {
+          this.counter++;
+          this.$emit('increase', this.counter);
+        }
+      }
+    });
+    new Vue({
+      el: "#app",
+      methods: {
+        handleAdd(val) {
+          console.log(val)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

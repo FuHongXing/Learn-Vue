@@ -1,0 +1,33 @@
+<!Doctype html>
+<html>
+
+<head>
+  <title>异步加载组件</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <child-component></child-component>
+  </div>
+  <script>
+    Vue.component('child-component', function(resolve, reject) {
+      window.setTimeout(function() {
+        resolve({
+          template: '<div>来自异步的内容</div>'
+        })
+      }, 2000)
+    })
+    new Vue({
+      el: "#app",
+      created() {
+        this.$nextTick(() => {
+
+        });
+      }
+    })
+  </script>
+</body>
+
+</html>

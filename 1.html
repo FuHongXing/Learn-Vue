@@ -1,0 +1,49 @@
+<!Doctype html>
+<html>
+
+<head>
+  <title>全局注册和局部注册组件、props单项数据传递</title>
+  <meta charset="utf-8">
+  <script src="https://vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">Hello Vue
+    <my-component :init-count="count"></my-component>
+  </div>
+  <script>
+    //全局注册
+    //Vue.component('my-component', {
+    //template: '<div>我是组件内容</div>'
+    //});
+    const Child = {
+      props: {
+        initCount: Number
+      },
+      template: '<div>我是局部注册组件内容{{message}}{{count}}</div>',
+      data() {
+        return {
+          message: 'Hello Vue',
+          count: this.initCount
+        }
+      },
+      methods: {
+        change() {
+          tihs.count = 2;
+        }
+      }
+    };
+
+    new Vue({
+      el: "#app",
+      components: {
+        'my-component': Child
+      },
+      data: {
+        count: 1
+      }
+    })
+  </script>
+</body>
+
+</html>

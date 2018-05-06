@@ -1,0 +1,26 @@
+<!Doctype html>
+<html>
+
+<head>
+  <title>Table和ul、select等挂载组件需要用is，在.Vue文件不受限</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li is="my-component"></li>
+    </ul>
+  </div>
+  <script>
+    Vue.component('my-component', {
+      template: '<div>Table</div>'
+    })
+    new Vue({
+      el: "#app"
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!Doctype html>
+<html>
+
+<head>
+  <title>组件</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <app inline-template>
+      <div>{{message}}</div>
+      <!--<div slot="a">{{message}}</div>
+      <div slot="b">来自b组件内容</div>-->
+    </app>
+  </div>
+  <script>
+    Vue.component('app', {
+      template: '\
+      <div>\
+        Hello\
+        <slot name="a">来自a组件内容</slot>\
+        <slot name="b"></slot>\
+      </div > \
+      ',
+      data() {
+        return {
+          message: 'Hello Vue'
+        }
+      }
+    })
+    new Vue({
+      el: "#app",
+      data: {
+        message: 'Vue'
+      }
+    })
+  </script>
+</body>
+
+</html>
